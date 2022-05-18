@@ -4,8 +4,6 @@ var evgApp = angular.module("EvgDreamApp");
 evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state', '$http', '$filter', '$cookies', '$window', function ($scope, $rootScope, $state, $http, $filter, $cookies, $window) {
   
     $scope.Valider = function(user) { 
-        $rootScope.user = user;
-
         // check le format du mail
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if(!user.email.match(mailformat)){
@@ -45,7 +43,8 @@ evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state',
 
                 $http(req).then(successPostCallback, errorPostCallback);
                 function successPostCallback(response){
-                    $rootScope.user = user.email;
+                    $cookies.put('useremail', user.email);
+                    $rootScope.useremail = user.email;
                     $state.go('moncompte');
                 }
                 function errorPostCallback(error){

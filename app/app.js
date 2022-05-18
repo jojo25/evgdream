@@ -67,6 +67,13 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
             $rootScope.$on('$stateChangeSuccess', function() {
                 document.body.scrollTop = document.documentElement.scrollTop = 0;
              });
+
+            // récupere l'utilisateur connecté
+            var useremail = $cookies.get('useremail');
+            if (useremail != null){
+                $rootScope.useremail = useremail;
+            }
+
             // récupere le panier
             var panierActivitesCookie = $cookies.getObject('panier');
             if (panierActivitesCookie != null){

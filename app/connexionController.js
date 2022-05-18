@@ -3,12 +3,17 @@ var evgApp = angular.module("EvgDreamApp");
 
 evgApp.controller("ConnexionController", ['$scope', '$rootScope', '$state', '$http', '$filter', '$cookies', '$window', function ($scope, $rootScope, $state, $http, $filter, $cookies, $window) {
   
+    if ($rootScope.useremail){
+        $state.go('moncompte');
+    }
+
     $scope.Valider = function(user) { 
-        // Vérifie si l'email existe deja.
+        // Vérifie si compte ok.
         $http.get($rootScope.apinode + 'connexioncompte/'+user.email + '/' + user.password).then(successCallback, errorCallback);
         function successCallback(response){
             if(response.data){
-                $rootScope.user = user.email;
+                $cookies.put('useremail', user.email);
+                $rootScope.useremail = user.email;
                 $state.go('moncompte');
             }
             else{
