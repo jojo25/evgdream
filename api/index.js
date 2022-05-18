@@ -102,13 +102,10 @@ app.get('/connexioncompte/:email/:password', (req,res) => {
         let hashPassword = result[0].password;
         bcrypt.compare(password, hashPassword, function(err, result) {
             if (result) {
-                db.query("SELECT * FROM `comptes` WHERE mail = ? and password = ?;", 
-                [ email, hashPassword ], function (err, result) {
-                    if (err) throw err; 
-                    res.status(200).json(result[0])
-                });
+                res.status(200).json(result);
+                
             } else {
-                res.status(200).json()
+                res.status(200).json();
             }
         });
     });
