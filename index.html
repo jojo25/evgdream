@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+  <head>
+    <!-- BASICS -->
+    <meta charset="utf-8">
+    <title>EVGDREAM: Votre EVG organisé par des experts ! | Demandez votre devis gratuit‎</title>
+    <meta name="description" content="Un groupe d’expert pour un EVG inoubliable ! Comptez sur nous pour organiser un évènement incroyable et inoubliable. Nous nous occupons de tout, du transfert de l’aéroport jusqu’à vos plus folles soirées, en passant par des activités complètement tarées.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./js/rs-plugin/css/settings.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="./css/isotope.css" media="screen">
+    <link rel="stylesheet" href="./css/flexslider.css" type="text/css">
+    <link rel="stylesheet" href="./js/fancybox/jquery.fancybox.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/mycss.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:400,400italic,700|Open+Sans:300,400,600,700">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css"rel="stylesheet">
+    
+    <link rel="stylesheet" href="./css/style.css">
+    <!-- skin -->
+    <link rel="stylesheet" href="./skin/default.css">
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-149863930-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-149863930-1');
+    </script>
+</head>
+
+  <body ng-app="EvgDreamApp" autoscroll="true">
+    <section id="header" class="appear"></section>
+    <div class="navbar navbar-fixed-top" role="navigation">
+        <div class="container container-navbar container-nav-pers">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="fa fa-bars color-black"></span>
+                </button>
+                <div class="navbar-logo">
+                <a href="#" ui-sref="accueil"><img height="60" src="./img/logo-evp.png" alt=""></a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav" style="margin-top:20px;" >
+                    <li><a href="#" ui-sref="accueil">Accueil</a></li>
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Destinations <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                        <li><a ui-sref="destination({desti: 2})">France</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 3})">Bruxelles</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 1})">Amsterdam</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 4})">Budapest</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 5})">Marrakech</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 6})">Barcelone</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 7})">Prague</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a ui-sref="destination({desti: 8})">Las Vegas</a></li>
+                        </ul>
+                    </li>
+                    <li><a ui-sref="destination({desti: 2})">Packages</a></li>
+                    <li><a ui-sref="devis">Devis</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a ui-sref="connexion"><i class="fa fa-user"></i> Mon compte</a></li>
+                    <li><a data-toggle="modal" data-target="#panierModal{{$index}}"><i class="fa fa-shopping-cart "></i> {{panierActivites.length}}</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </div>
+
+    <ui-view autoscroll="true"></ui-view>
+
+    <section id="footer" class="section footer">
+        <div class="container">
+            <div class="row animated opacity mar-bot20" data-andown="fadeIn" data-animation="animation">
+                <div class="col-sm-12 align-center">
+                    
+                    <ul class="social-network social-circle">
+                        <li><a href="https://www.facebook.com/evgdream/" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.instagram.com/evgdream/" class="icoInstagram" title="Instagram"><i class="fa fa-instagram"></i></a></li>
+                        <li><a href="https://twitter.com/EVGDREAM1" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row align-center copyright">
+                <div class="col-sm-12">
+                    <p>Copyright &copy; All rights reserved</p>
+                </div>
+            </div>
+            <div class="credits">
+                <!--
+                  All the links in the footer should remain intact.
+                  You can delete the links only if you purchased the pro version.
+                  Licensing information: https://bootstrapmade.com/license/
+                  Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Vlava
+                -->
+                Designed by <a href="#">Benji</a>
+            </div>
+        </div>
+    
+    </section>
+    <a href="#header" class="scrollup"><i class="fa fa-chevron-up"></i></a>
+    
+    <!-- PANIER MODAL -->
+  <div class="modal fade" id="panierModal{{$index}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      
+      <!-- MODAL ACTIVITES -->
+      <div ng-if="!boutonSejour" class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h2 style="text-align:center; color:#A342AA" class="modal-title" id="myModalLabel">VOTRE EVG</h2>
+        </div>
+        <div class="modal-body">
+            <!-- PANIER content -->
+            <div class="row">
+                <div class="col-sm-6 col-md-4" ng-repeat="activite in panierActivites">
+                  <div class="thumbnail actiPanier">
+                    <img style="min-height: 100px; max-height: 100px;" width="150" height="100" src="./img/portfolio/{{activite.image}}" alt="...">
+                    <div class="caption">
+                      <div class="activiteTitrePanier">
+                          <h3>{{activite.nom}}</h3>
+                      </div>
+                        
+                      <p><a ng-click="removeFromPanier(activite)" class="btn btn-default angular-link" role="button">Supprimer</a></p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default btn-retour" data-dismiss="modal">RETOUR</button>
+          <a ui-sref="devis" class="btn-get-started" data-dismiss="modal">DEMANDEZ VOTRE DEVIS</a>
+        </div>
+      </div>
+
+      <!-- MODAL sejour -->
+      <div ng-if="boutonSejour" class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h2 style="text-align:center; color:#A342AA" class="modal-title" id="myModalLabel">VOULEZ VOUS AJOUTER DES ACTIVITES A VOTRE SEJOUR ?</h2>
+          </div>
+          <div class="modal-footer">            
+            <a ui-sref="devis" class="btn btn-default btn-retour">NON</a>
+            <a ui-sref="destination({desti: id_sous_destination})"  class="btn-get-started">OUI</a>
+          </div>
+        </div>
+    </div>
+  </div>
+
+    <!-- Javascript Library Files -->
+      <!-- Javascript Library Files -->
+      <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+      <script src="js/jquery.js"></script>
+      <script src="js/jquery.easing.1.3.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/jquery.isotope.min.js"></script>
+      <script src="js/jquery.nicescroll.min.js"></script>
+      <script src="js/fancybox/jquery.fancybox.pack.js"></script>
+      <script src="js/skrollr.min.js"></script>
+      <script src="js/jquery.scrollTo.min.js"></script>
+      <script src="js/jquery.localScroll.min.js"></script>
+      <script src="js/stellar.js"></script>
+      <script src="js/jquery.appear.js"></script>
+      <script src="js/jquery.flexslider-min.js"></script>
+    
+    
+    <!-- Contact Form JavaScript File -->
+    <script src="contactform/contactform.js"></script>
+    <script type="text/javascript" src="bower_components/moment/min/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>  
+    
+    <!-- Template Main Javascript File -->
+    <script src="js/main.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/@uirouter/angularjs/release/angular-ui-router.min.js"></script>
+    <script src="node_modules/angular-cookies/angular-cookies.min.js"></script>
+
+    <script src="app/app.js"></script>
+    <script src="app/accueilController.js"></script>
+    <script src="app/destinationController.js"></script>
+    <script src="app/devisController.js"></script>
+    <script src="app/connexionController.js"></script>
+    <script src="app/creationcompteController.js"></script>
+    <script src="app/moncompteController.js"></script>
+
+    <script>
+      ;(function($){
+      $.fn.datepicker.dates['fr'] = {
+      days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+      daysShort: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
+      daysMin: ["d", "l", "ma", "me", "j", "v", "s"],
+      months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+      monthsShort: ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
+      today: "Aujourd'hui",
+      monthsTitle: "Mois",
+      clear: "Effacer",
+      weekStart: 1,
+      format: "dd/mm/yyyy"
+      };
+      }(jQuery));
+  </script>
+
+  <script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datepicker({
+          format: 'dd-MM-yyyy',
+          language: 'fr',
+          autoclose: true,
+          todayHighlight: true
+        });
+        $('#datetimepicker2').datepicker({
+          format: 'dd-MM-yyyy',
+          language: 'fr',
+          autoclose: true,
+          todayHighlight: true
+        });
+    });
+    
+</script>
+  </body>
+</html>

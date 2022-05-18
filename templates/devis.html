@@ -1,0 +1,191 @@
+<section id="section-devis" class="section appear clearfix bg-white" style="margin-top:20px;">
+  <section id="intro" style="margin-top: 0 !important; height: 30vh !important;">
+    <div class="intro-content">
+        <h2>Devis</h2>
+    </div>
+  </section>
+
+    <div class="container" style="background: #f6f6f6;margin-top: 20px;">
+
+      <div class="row"  style="margin-top: 20px;">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="section-header">
+            <h2 class="section-heading animated" data-animation="bounceInUp">Devis <span style="color: #A342AA;"">rapide</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="cform" id="contact-form">
+            <div id="sendmessage">Votre devis nous a bien été envoyé ! Nous vous recontacterons rapidement.</div>
+            <div id="errormessage"></div>
+
+  <!--Debut form-->
+  
+  <form action="devisController.php?action=submit" method="post" class="contactForm">
+			<div class="row">
+          <div class='col-md-6'>
+              <div class="form-group" >
+                  <label>Date de départ</label>
+                  <div class='input-group date form-group' id='datetimepicker1'>
+                    
+                      <input type='text' ng-model="devis.date_depart"  name="date_depart" placeholder="Selectionnez une date" class="form-control" />
+                      <span class="input-group-addon">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                  </div>
+              </div>
+            
+          </div>
+         
+        <div class="col-md-6">
+            <div class="form-group" >
+                <label>Date de retour</label>
+                <div class='input-group date form-group' id='datetimepicker2'>
+                    
+                    <input type='text' ng-model="devis.date_retour"  name="date_retour" placeholder="Selectionnez une date" class="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                    
+                </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="row">
+          <div class='col-md-6'>
+              <div class="form-group" >
+                      <label>Ville de départ</label>
+                      <input type="text" ng-model="devis.villedepart"  name="ville_depart" placeholder="Saisissez votre ville de départ" class="cform-text" size="400" data-rule="required" data-msg="Merci de saisir votre ville de départ">
+                      <div class="validation"></div>
+              </div>
+          </div>
+         
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Destination</label>
+                
+                <div ng-if="selectDestiCookie != null && selectDestiCookie != 0">
+                    <select disabled  ng-value="selectDestiCookie" name="destination" class="form-control" placeholder="Selectionnez votre destination" data-rule="required" data-msg="Merci de selectionner votre destination">
+                        <option value="2">France</option>
+                        <option value="3">Bruxelles</option>
+                        <option value="1">Amsterdam</option>
+                        <option value="4">Budapest</option>
+                        <option value="5">Marrakech</option>
+                        <option value="6">Barcelone</option>
+                        <option value="7">Prague</option>
+                        <option value="8">Las Vegas</option>
+                        <option value="10">Séjour au ski</option>
+                      </select>
+                </div>
+
+                  <div ng-if="selectDestiCookie == null || selectDestiCookie == 0">
+                      <select ng-model="$parent.selectDesti" name="destination"  class="form-control" placeholder="Selectionnez votre destination" data-rule="required" data-msg="Merci de selectionner votre destination">
+                          <option value="2">France</option>
+                          <option value="3">Bruxelles</option>
+                          <option value="1">Amsterdam</option>
+                          <option value="4">Budapest</option>
+                          <option value="5">Marrakech</option>
+                          <option value="6">Barcelone</option>
+                          <option value="7">Prague</option>
+                          <option value="8">Las Vegas</option>
+                          <option value="10">Séjour au ski</option>
+                        </select>
+                  </div>
+                  <div class="validation"></div>
+                  <input type="text" name="destination" value="{{selectDesti}}" hidden>
+            </div>
+         </div>
+      </div>
+      
+      <div class="row">
+          <div class='col-md-6'>
+              <div class="form-group">
+                      <label>Nombre de participants</label>
+                      <select class="form-control" ng-model="devis.nb_participant" name="nb_participant" placeholder="Selectionnez votre destination" data-rule="required" data-msg="Merci de selectionner le nombre de participant">
+                          <option value="0">Selectionnez les particpants</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                          <option>11</option>
+                          <option>12</option>
+                          <option>13</option>
+                          <option>14</option>
+                          <option>15</option>
+                          <option>16</option>
+                          <option>17</option>
+                          <option>18</option>
+                          <option>19</option>
+                          <option>20</option>
+                          <option>21</option>
+                          <option>22</option>
+                          <option>23</option>
+                          <option>24</option>
+                          <option>25</option>
+                        </select>
+                        <div class="validation"></div>
+              </div>
+          </div>
+         
+        <div class="col-md-6">
+            <div class="form-group">
+                <label>Budget par personne</label>
+                <input type="text" ng-model="devis.budget"  name="budget" placeholder="Saisissez votre budget" class="cform-text" size="40" data-rule="required" data-msg="Merci de saisir votre budget">
+                <div class="validation"></div>
+            </div>
+         </div>
+      </div>
+      
+      <hr>
+              <div class="field message form-group">
+                  <label>Mes activités </label>
+                  <div ng-if="(panierActivites == null || panierActivites.length == 0) && selectDesti == null">
+                      <p style="color:red">Sélectionnez une destination</p>
+                  </div>
+                  <div ng-if="(panierActivites == null || panierActivites.length == 0) && selectDesti != null">
+                      <a ng-disabled="selectDesti==null" ui-sref="destination({desti: selectDesti})" value="ENVOYER" class="btn btn-get-started">AJOUTEZ DES ACTIVITES</a>
+                  </div>
+                  <div ng-if="panierActivites != null && panierActivites.length != 0">
+                      <a ui-sref="destination({desti: selectDestiCookie})" value="ENVOYER" class="btn btn-get-started">AJOUTEZ D'AUTRES ACTIVITES</a>
+                  </div>
+                  <div class="row" style="margin-top:20px;">
+                      <div class="col-sm-6 col-md-4" ng-repeat="activite in panierActivites">
+                          <div class="thumbnail">
+                            <img style="min-height: 100px; max-height: 100px;" width="150" height="100" src="./img/portfolio/{{activite.image}}" alt="...">
+                            <div class="caption">
+                                <div class="activiteTitrePanier">
+                                    <h3>{{activite.nom}}</h3>
+                                </div>
+                              <p><a ng-click="removeFromPanier(activite)" class="btn btn-default angular-link" role="button">Supprimer</a></p>
+                            </div>
+                          </div>
+                          <input checked type="checkbox" name="activites[]" value="{{activite.id}}-{{activite.nom}}" hidden/>
+                        </div>
+                  </div>
+              </div>
+              <hr>
+              <div class="field message form-group">
+                <label>Plus de détail ? </label>
+                <textarea name="message" placeholder="D'autres désirs, destinations ou activités ? Ecrivez nous tous vos désires, nous vous ferons d'autres propositions" class="cform-textarea" cols="40" rows="10"></textarea>
+                <div class="validation"></div>
+              </div>
+              
+                
+              <div class="send-btn">
+                <!-- ./span12<input type="submit" value="ENVOYER" class="btn btn-get-started"> -->
+                <a ng-click="ValiderDevis(devis)" class="btn btn-get-started">VALIDER</a>
+             </div>
+
+            </form>
+          </div>
+        </div>
+        <!-- ./span12 -->
+      </div>
+
+    </div>
+  </section>

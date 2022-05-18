@@ -1,0 +1,60 @@
+@media (min-width: 1200px) {
+    .container {
+      width: 90%;
+    }
+  }
+  .intro-amsterdam {
+  height: 50vh !important;
+  }
+  .actives-haut{
+      width: 250px;
+  }
+  .actives-bas{
+      margin-top: 30px; 
+      width: 250px;
+  }
+  .flex-direction-nav a {
+  margin: 30px -20px 0 !important;
+
+  }
+  .content, .container {
+  overflow: inherit;
+  }
+  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: white;
+  border-color: #337ab7;
+  color: black;
+  }
+  .portfolio-item .portfolio-desc {
+      width: 60%;
+      
+  }
+  .angular-link{
+    cursor: pointer;
+  }
+  .btn-retour {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 2px;
+  transition: 0.5s;
+  margin: 10px;
+}
+.btn-ajout-panier{
+  border: 1px solid;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.btn-ajout-panier:hover{
+  -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+@media (min-width: 992px) {
+      .activiteTitrePanier{
+        min-height: 80px;
+      }
+  }

@@ -1,0 +1,257 @@
+<section id="intro" class="intro-amsterdam" style="background: url({{destination.image}}) top center !important; background-position: center !important;">
+    <div class="intro-content">
+        <h2>{{destination.titre}}</h2>
+    </div>
+</section>
+
+<div ng-repeat="activite in panierActivitesCookie">{{activite.nom}}</div>
+
+<!-- CONTENT -->
+<section id="section-devis" class="section appear clearfix bg-white">
+  <div class="container" style="background: #f6f6f6; padding-bottom: 20px;">
+
+    <!-- SEJOUR -->
+      <div class="row"  style="margin-top: 20px;" ng-if="activitesSejour.length > 0">
+          <div>
+            <div class="section-header">
+              <h2 style="text-align:left; margin-left:5px" class="section-heading animated" data-animation="bounceInUp">Choisissez votre <span style="color: #A342AA;"">séjour</span></h2>
+            </div>
+          </div>
+      </div>
+  
+        <div class="row" style="width:95%; margin: auto">
+          <div class="portfolio-items" id="3">
+  
+            <article class="col-md-3 col-sm-4" ng-repeat="activite in activitesSejour">
+                <div class="portfolio-item" style="margin-top:15px;">
+                    <div class="btn btn-dark btn-small btn-portfollio" ng-if="activite.prix > 1">
+                        À partir de {{activite.prix}} €
+                    </div>
+                    <img width="360" height="320" src="./img/portfolio/{{activite.image}}" alt="">
+                    <div class="portfolio-desc align-center">
+                        <div class="folio-info">
+                            <h5>{{activite.nom}}</h5>
+                            <a class="btn btn-ajout-panier" data-toggle="modal" data-target="#panierModal" ng-click="AddToPanier(activite)" class="angular-link"><i class="fa fa-plus fa"></i> Ajouter à mon EVG</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+  
+          </div>
+        </div>
+
+    <!-- ACTIVITES JOUR -->
+    <div class="row"  style="margin-top: 20px;" ng-if="activitesDay.length > 0">
+      <div>
+        <div class="section-header">
+          <h2 style="text-align:left; margin-left:5px" class="section-heading animated" data-animation="bounceInUp">Activités <span style="color: #A342AA;"">jour</span></h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="width:95%; margin: auto">
+      <div class="portfolio-items" id="3">
+
+        <article class="col-md-3 col-sm-4" ng-repeat="activite in activitesDay | limitTo:showActiDay">
+            <div class="portfolio-item" style="margin-top:15px;">
+                <div class="btn btn-dark btn-small btn-portfollio" ng-if="activite.prix > 1">
+                    À partir de {{activite.prix}} €
+                </div>
+                <img width="360" height="320" src="./img/portfolio/{{activite.image}}" alt="">
+                <div class="portfolio-desc align-center">
+                    <div class="folio-info">
+                        <h5>{{activite.nom}}</h5>
+                        <a class="btn btn-ajout-panier angular-link" data-toggle="modal" data-target="#panierModal" ng-click="AddToPanier(activite)"><i class="fa fa-plus fa"></i> Ajouter à mon EVG</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+      </div>
+      
+      <div style="text-align: center; margin-top: 10px;"  ng-if="showActiDay < activitesDay.length">
+          <button ng-click="VoirPlusActiDay()" class="btn-get-started btn-voirplus">Voir plus d'activités...</a>
+      </div>
+    </div>
+
+  <!-- ACTIVITES NUIT -->
+    <div class="row"  style="margin-top: 100px;" ng-if="activitesNight.length > 0">
+          <div>
+            <div class="section-header">
+              <h2 style="text-align:left; margin-left:5px" class="section-heading animated" data-animation="bounceInUp">Activités <span style="color: #A342AA;"">nuit</span></h2>
+            </div>
+          </div>
+    </div>
+        
+    <div class="row" style="width:95%; margin: auto">
+          
+        <div class="portfolio-items" id="3">
+
+            <article class="col-md-3 col-sm-4" ng-repeat="activite in activitesNight | limitTo:showActiNight">
+                <div class="portfolio-item" style="margin-top:15px;">
+                    <div class="btn btn-dark btn-small btn-portfollio" ng-if="activite.prix > 1">
+                        À partir de {{activite.prix}} €
+                    </div>
+                    <img width="360" height="320" src="./img/portfolio/{{activite.image}}" alt="">
+                    <div class="portfolio-desc align-center">
+                        <div class="folio-info">
+                            <h5>{{activite.nom}}</h5>
+                            <a class="btn btn-ajout-panier angular-link" data-toggle="modal" data-target="#panierModal" ng-click="AddToPanier(activite)"><i class="fa fa-plus fa"></i> Ajouter à mon EVG</a>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div style="text-align: center; margin-top: 10px;" ng-if="showActiNight < activitesNight.length">
+            <button ng-click="VoirPlusActiNight()" class="btn-get-started btn-voirplus">Voir plus d'activités...</a>
+        </div>
+      </div>
+    
+   <!-- HEBERGEMENTS -->
+  <div class="row"  style="margin-top: 100px;" ng-if="activitesHeberg.length > 0">
+        <div>
+          <div class="section-header">
+            <h2 style="text-align:left; margin-left:5px" class="section-heading animated" data-animation="bounceInUp">Mon <span style="color: #A342AA;"">Hébergement</span></h2>
+          </div>
+        </div>
+  </div>
+      
+  <div class="row" style="width:95%; margin: auto">
+        
+                <div class="portfolio-items" id="3">
+
+                    <article class="col-md-3 col-sm-4" ng-repeat="activite in activitesHeberg">
+                        <div class="portfolio-item" style="margin-top:15px;">
+                            <div class="btn btn-dark btn-small btn-portfollio" ng-if="activite.prix > 1">
+                                À partir de {{activite.prix}} €
+                            </div>
+                            <img width="360" height="320" src="./img/portfolio/{{activite.image}}" alt="">
+                            <div class="portfolio-desc align-center">
+                                <div class="folio-info">
+                                    <h5>{{activite.nom}}</h5>
+                                    <a class="btn btn-ajout-panier angular-link" data-toggle="modal" data-target="#panierModal" ng-click="AddToPanier(activite)"><i class="fa fa-plus fa"></i> Ajouter à mon EVG</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+    </div>
+
+
+    <!-- FORMULES -->
+    <div class="row"  style="margin-top: 20px;" ng-if="activitesPack.length > 0">
+      <div>
+        <div class="section-header">
+          <h2 style="text-align:left; margin-left:5px" class="section-heading animated" data-animation="bounceInUp">Vos <span style="color: #A342AA;"">formules</span></h2>
+        </div>
+      </div>
+  </div>
+
+    <div class="row" style="width:95%; margin: auto">
+      <div class="portfolio-items" id="3">
+
+        <article class="col-md-3 col-sm-4" ng-repeat="activite in activitesPack">
+            <div class="portfolio-item" style="margin-top:15px;">
+                <div class="btn btn-dark btn-small btn-portfollio" ng-if="activite.prix > 1">
+                    À partir de {{activite.prix}} €
+                </div>
+                <img width="360" height="320" src="./img/portfolio/{{activite.image}}" alt="">
+                <div class="portfolio-desc align-center">
+                    <div class="folio-info">
+                        <h5>{{activite.nom}}</h5>
+                        <a class="btn btn-ajout-panier" data-toggle="modal" data-target="#panierModal" ng-click="AddToPanier(activite)" class="angular-link"><i class="fa fa-plus fa"></i> Ajouter à mon EVG</a>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+      </div>
+    </div>
+</div>
+
+  
+</section>
+
+<section id="section-contact" class="section appear clearfix bg-white">
+    <div class="container">
+
+        <div class="row mar-bot40">
+            <div class="col-md-offset-3 col-md-6">
+                <div class="section-header">
+                    <h2 class="section-heading animated" data-animation="bounceInUp">Demandez votre devis</h2>
+                    <hr style="width: 100px;background: #A342AA;    border-top: 2px solid #A342AA;">
+                    <p>Laissez nous vos coordonneés et informations principales sur l'EVG de vos rêves et nous vous recontacterons afin de le réaliser.</p>
+                    <div>
+                        <a ui-sref="devis" class="btn-get-started">DEMANDEZ VOTRE DEVIS</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </div>
+</section>
+
+<style>
+  @media (min-width: 1200px) {
+    .container {
+      width: 90%;
+    }
+  }
+  .intro-amsterdam {
+  height: 50vh !important;
+  }
+  .actives-haut{
+      width: 250px;
+  }
+  .actives-bas{
+      margin-top: 30px; 
+      width: 250px;
+  }
+  .flex-direction-nav a {
+  margin: 30px -20px 0 !important;
+
+  }
+  .content, .container {
+  overflow: inherit;
+  }
+  .nav .open > a, .nav .open > a:hover, .nav .open > a:focus {
+  background-color: white;
+  border-color: #337ab7;
+  color: black;
+  }
+  .portfolio-item .portfolio-desc {
+      width: 60%;
+      
+  }
+  .angular-link{
+    cursor: pointer;
+  }
+  .btn-retour {
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 32px;
+  border-radius: 2px;
+  transition: 0.5s;
+  margin: 10px;
+}
+.btn-ajout-panier{
+  border: 1px solid;
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  -webkit-transition: .3s ease-in-out;
+  transition: .3s ease-in-out;
+}
+.btn-ajout-panier:hover{
+  -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+@media (min-width: 992px) {
+      .activiteTitrePanier{
+        min-height: 80px;
+      }
+  }
+</style>

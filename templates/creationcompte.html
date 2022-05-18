@@ -1,0 +1,64 @@
+<!-- contact -->
+<section id="section-devis" class="section appear clearfix bg-white" style="margin-top:20px;">
+
+    <section id="intro" style="margin-top: 0 !important; height: 30vh !important;">
+      <div class="intro-content">
+          <h2>Inscription</h2>
+      </div>
+    </section>
+
+    <div class="container" style="background: #f6f6f6;margin-top: 20px;">
+
+      <div class="row"  style="margin-top: 20px;">
+        <div class="col-md-offset-3 col-md-6">
+          <div class="section-header">
+            <h2 class="section-heading animated" data-animation="bounceInUp">Créez votre espace <span style="color: #A342AA;"">client</span></h2>
+            <a ui-sref="connexion">j'ai déjà un compte</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+          <div class="cform" id="contact-form">
+
+  <!--Debut form-->
+  <form novalidate class="contactForm">
+
+      <div class="field your-email form-group">
+          <label>Votre e-mail*</label>
+        <input type="text" ng-model="user.email" placeholder="Votre Email" class="cform-text" size="40" data-rule="email" data-msg="Entrez un email valide">
+        <p class="validation-angular" ng-if="erreuremail">{{erreuremail}}</p>
+      </div>
+
+      <div class="field subject form-group">
+          <label>Votre numéro de téléphone*</label>
+        <input type="text" ng-model="user.telephone" placeholder="Votre Numéro de Téléphone" class="cform-text" size="40" data-rule="minlen:10" data-msg="Entrez un téléphone valide">
+        <div class="validation"></div>
+      </div>
+
+      <div class="field subject form-group">
+        <label>Mot de passe</label>
+      <input type="password" ng-model="user.password" placeholder="Votre Mot de Passe" class="cform-text" size="40" data-rule="minlen:6" data-msg="Entrez un mot de passe">
+      <p class="validation-angular" ng-if="erreurmdp">{{erreurmdp}}</p>
+    </div>
+    <div class="field subject form-group">
+      <label>Confirmez le mot de passe</label>
+    <input type="password" ng-model="user.password2" placeholder="Confirmation du mot de passe" class="cform-text" size="40" data-rule="minlen:6" data-msg="Entrez un mot de passe">
+    <p class="validation-angular" ng-if="erreurmdp2">{{erreurmdp2}}</p>
+  </div>
+
+     
+              
+    <p>* champs obligatoires</p>
+    <div class="send-btn">
+      <input type="submit" ng-click="Valider(user)" value="Valider" class="btn btn-get-started">
+    </div>
+
+  </form>
+  </div>
+  </div>
+        <!-- ./span12 -->
+  </div>
+
+    </div>
+  </section>

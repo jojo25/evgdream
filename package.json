@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@uirouter/angularjs": "^1.0.30",
+    "angular": "^1.8.2",
+    "angular-cookies": "^1.8.3",
+    "angular-ui-router-css": "^0.0.0"
+  }
+}

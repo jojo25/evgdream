@@ -1,0 +1,19 @@
+{
+  "name": "node-api-evgdream",
+  "version": "1.0.0",
+  "description": "api evgdream",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bb",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.18.1",
+    "mysql": "^2.18.1",
+    "nodemo": "^1.0.0",
+    "nodemon": "^2.0.16"
+  }
+}

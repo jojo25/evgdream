@@ -1,0 +1,75 @@
+<section id="section-devis" class="section appear clearfix bg-white" style="margin-top:20px;">
+    
+    <section id="intro" style="margin-top: 0 !important; height: 30vh !important;">
+      <div class="intro-content">
+          <h2>Connexion</h2>
+      </div>
+    </section>
+
+  <!-- contact -->
+
+    <div class="container" style="background: #f6f6f6; margin-top: 20px;">
+
+      <div class="row">
+        <div class="col-md-8"> 
+          <div class="row"  style="margin-top: 20px;text-align: left;">
+            <div class="col-md-offset-1 col-md-6">
+              <div class="section-header">
+                <h2 class="section-heading animated" data-animation="bounceInUp" style="color: #A342AA;text-align: left;text-transform: none;">Connexion</h2>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+              <div class="cform" id="contact-form">
+    
+                <!--Debut form-->
+                <form novalidate class="contactForm">
+                  <p class="validation-angular" ng-if="erreur">{{erreur}}</p>
+                    <div class="field your-email form-group">
+                        <label>E-mail*</label>
+                      <input type="text" ng-model="user.email" placeholder="Votre Email" class="cform-text" size="40" data-rule="email" data-msg="Entrez un email valide">
+                      <div class="validation"></div>
+                    </div>
+                    <div class="field subject form-group">
+                      <label>Mot de passe</label>
+                    <input type="password" ng-model="user.password" placeholder="Votre Mot de Passe" class="cform-text" size="40" data-rule="minlen:6" data-msg="Entrez un mot de passe">
+                    <div class="validation"></div>
+                  </div>   
+                            
+                  <div class="send-btn">
+                    <input type="submit" ng-click="Valider(user)" value="Valider" class="btn btn-get-started">
+                  </div>
+    
+                </form>
+              </div>
+      </div>
+            <!-- ./span12 -->
+      </div>
+        </div>
+        <div class="col-md-4">
+          <div class="row"  style="margin-top: 20px;text-align: left;">
+            <div class="col-md-offset-1 col-md-10">
+              <div class="section-header">
+                <h2 class="section-heading animated" data-animation="bounceInUp" style="color: #A342AA;text-align: left;text-transform: none;">Inscription</h2>
+              </div>
+              <p>Pas encore de compte ?</p>
+               <a ui-sref="creationcompte" style="text-align:left;color: #A342AA;">Inscrivez vous</a>
+            </div>
+          </div>
+          <div class="row"  style="margin-top: 20px;text-align: left;">
+            <div class="col-md-offset-1 col-md-10">
+              <div class="section-header">
+                <h2 class="section-heading animated" data-animation="bounceInUp" style="color: #A342AA;text-align: left;text-transform: none;">Mot de passe oublié</h2>
+              </div>
+              <p>Vous ne vous souvenez plus de votre mot de passe ?</p>
+               <a href="creationcompte" style="text-align:left;color: #A342AA;">Renvoyez le moi</a>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      
+
+    </div>
+  </section>
