@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style amp4email-boilerplate>body{visibility:hidden}</style>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-anim" src="https://cdn.ampproject.org/v0/amp-anim-0.1.js"></script>
+</head>
+<body>
+    "Bonjour,<br><br>Une nouvelle demande de devis a eu lieu à partir du site internet: <br><br>
+    <u>Coordonnées du prospect:</u><br><br>
+    Email: <b>{{ mail }}</b><br>
+    Tel: <b>{{ tel }}</b><br>
+    Date Départ: <b>{{ date_depart }}</b><br>
+    Date Retour: <b>{{ date_retour }}</b><br>
+    Ville de départ: <b>{{ ville_depart }}</b><br>
+    Destination: <b>{{ destination }}</b><br>
+    Nombre de participants: <b>{{ nb_participant }}</b><br>
+    Liste activités : <b>{{#activites}} <p> {{nom}} </p>{{/activites}}</b><br>
+    Budget par personne: <b>{{ budget }}</b><br>
+    Commentaire: <b>{{ message }}</b><br><br>
+</body>
+</html>
