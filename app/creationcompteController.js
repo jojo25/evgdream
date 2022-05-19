@@ -1,7 +1,7 @@
 var evgApp = angular.module("EvgDreamApp");
 
 
-evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state', '$http', '$filter', '$cookies', '$window', function ($scope, $rootScope, $state, $http, $filter, $cookies, $window) {
+evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state', '$http', '$cookies', '$stateParams', function ($scope, $rootScope, $state, $http, $cookies, $stateParams) {
   
     $scope.Valider = function(user) { 
         // check le format du mail
@@ -45,7 +45,14 @@ evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state',
                 function successPostCallback(response){
                     $cookies.put('useremail', user.email);
                     $rootScope.useremail = user.email;
-                    $state.go('moncompte');
+
+                    //TODo : appel creation du devis
+                    if ($stateParams.devis){
+                        $state.go('moncompte', { devis: true});
+                    }
+                    else{
+                        $state.go('moncompte');
+                    }
                 }
                 function errorPostCallback(error){
                     console.log(error);

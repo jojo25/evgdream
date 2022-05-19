@@ -14,7 +14,7 @@ evgApp.controller("DevisController", ['$scope', '$rootScope', '$state', '$cookie
     if (panierActivitesCookie != null){
         $scope.panierActivites = panierActivitesCookie;
     }
-
+    
     $scope.removeFromPanier = function(activite) { 
         var index = $scope.panierActivites.indexOf(activite);
         $scope.panierActivites.splice(index, 1);     
@@ -30,7 +30,15 @@ evgApp.controller("DevisController", ['$scope', '$rootScope', '$state', '$cookie
 
     $scope.ValiderDevis = function(devis) { 
         $rootScope.devis = devis;
-        $state.go('creationcompte');
+
+        if ($rootScope.useremail){
+            // ToDo envoie devis
+            $state.go('moncompte', { devis: true});
+        }
+        else
+        {
+            $state.go('creationcompte', { devis: true});
+        }
     }
 
 }]);

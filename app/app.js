@@ -36,6 +36,9 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     var creationcompteState = {
         name: 'creationcompte',
         url: '/creationcompte',
+        params: {
+            devis: null
+        },
         templateUrl: 'templates/creationcompte.html',
         controller: 'CreationCompteController'
     }
@@ -44,12 +47,10 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         name: 'moncompte',
         url: '/moncompte',
         templateUrl: 'templates/moncompte.html',
+        params: {
+            devis: null
+        },
         controller: 'MonCompteController'
-    }
-
-    var moncomptedevisState = {
-        name: 'moncompte.devis',
-        template: '<p>test</p>'
     }
 
     $stateProvider.state(acceueilState);
@@ -58,7 +59,6 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider.state(connexionState);
     $stateProvider.state(moncompteState);
     $stateProvider.state(creationcompteState);
-    $stateProvider.state(moncomptedevisState);
 })
     .run(['$rootScope', '$cookies',
         function ($rootScope, $cookies) {

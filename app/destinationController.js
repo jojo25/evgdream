@@ -2,7 +2,7 @@ var evgApp = angular.module("EvgDreamApp");
 
 evgApp.controller("DestinationController", ['$scope', '$rootScope', '$http', '$filter', '$cookies', '$stateParams', function ($scope, $rootScope, $http, $filter, $cookies, $stateParams) {
   
-    var idDesti =  $stateParams.desti
+    var idDesti =  $stateParams.desti;
 
     $scope.panierActivites = [];
 
