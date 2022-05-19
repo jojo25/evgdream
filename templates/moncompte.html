@@ -19,9 +19,30 @@
                   </ul>
             </div>
             <div class="col-md-9">
-                <div class="content-moncompte"> 
-                    <p>Vous n'avez aucun devis en cours.</p>
-                    <a ui-sref="devis" class="btn-get-started" data-dismiss="modal">DEMANDEZ VOTRE DEVIS</a>
+                <div class="row" style="display: none;">
+                    <div ng-if="devis" class="alert alert-success" role="alert">
+                        Votre demande de devis à bien été prise en compte. Nos équipes vous répondrons dans les meilleurs délais.
+                    </div>
+                    <div class="content-moncompte"> 
+                        <p>Vous n'avez aucun devis en cours.</p>
+                        <a ui-sref="devis" class="btn-get-started" data-dismiss="modal">DEMANDEZ VOTRE DEVIS</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div ng-if="devis" class="alert alert-success" role="alert">
+                        Votre demande de devis à bien été prise en compte. Nos équipes vous répondrons dans les meilleurs délais.
+                    </div>
+                    <div class="content-devis"> 
+                        <div class="row">
+                            <div class="col-md-10">
+                                <h3 style="font-weight: bold; font-size: 22px;">Budapest</h3>
+                            </div>
+                            <div class="col-md-2">
+                                <a style="margin:0" ui-sref="devis" class="btn-get-started">Détails</a>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
                 </div>
             </div>
         </div>
