@@ -3,7 +3,8 @@ const mysql = require('mysql');
 const bcrypt = require('bcrypt');
 const nodemailer = require("nodemailer");
 const path = require('path');
-const hbs = require('nodemailer-express-handlebars')
+const hbs = require('nodemailer-express-handlebars');
+const jwt = require('jsonwebtoken');
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -155,7 +156,7 @@ app.post('/validationdevis', (req,res) => {
             // send mail with defined transport object
             let mailOptions = {
                 from: '"EVGDREAM" <contact@evgdream.com>', // sender address
-                to: "jonaslatapie@gmail.com", // list of receivers
+                to: "jonaslatapie@gmail.com, Sayoso@hotmail.fr, benjamin_bitton@hotmail.com, contact@evgdream.com", // list of receivers
                 subject: "Nouvelle Demande de devis de" + req.body.mail,  // Subject line
                 template: 'devis',
                 context: {
