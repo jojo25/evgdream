@@ -118,7 +118,27 @@ app.get('/connexioncompte/:email/:password', (req,res) => {
            
 })
 
+app.post('/newpassword', (req,res) => {
+    let password = req.body.password;
+    let token = req.body.token;
 
+    db.query("SELECT * FROM token_password where token = ?;", [ token ], function (err, result) {
+
+        if (err) throw err;
+
+        if (result.length === 0) {
+            res.status(404).json();
+        } else {
+            let id_personne = result[0].id_compte;
+            bcrypt.hash(password, 12).then(hash => {
+                db.query("UPDATE comptes set password = ? where id = ?;", [ hash, id_personne ], function (err, result) {
+                    if (err) throw err;
+                    res.status(200).json(result[0]);
+                });
+            });
+        }
+    });
+});
 
 app.post('/sendpassword', (req,res) => {
     
