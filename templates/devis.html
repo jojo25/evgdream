@@ -27,12 +27,8 @@
           <div class='col-md-6'>
               <div class="form-group" >
                   <label>Date de départ</label>
-                  <div class='input-group date form-group' id='datetimepicker1'>
-                    
-                      <input type='text' ng-model="devis.date_depart"  name="date_depart" placeholder="Selectionnez une date" class="form-control" />
-                      <span class="input-group-addon">
-                          <span class="glyphicon glyphicon-calendar"></span>
-                      </span>
+                  <div class='input-group date form-group'>
+                      <input type="date" class="form-control" id="exampleInput" name="input" ng-model="devis.date_depart" placeholder="yyyy-MM-dd" required />
                   </div>
               </div>
             
@@ -41,13 +37,8 @@
         <div class="col-md-6">
             <div class="form-group" >
                 <label>Date de retour</label>
-                <div class='input-group date form-group' id='datetimepicker2'>
-                    
-                    <input type='text' ng-model="devis.date_retour"  name="date_retour" placeholder="Selectionnez une date" class="form-control"/>
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-                    
+                <div class='input-group date form-group'>
+                    <input type="date" class="form-control" id="exampleInput" name="input" ng-model="devis.date_retour" placeholder="yyyy-MM-dd" required />
                 </div>
             </div>
          </div>
@@ -171,14 +162,17 @@
               <hr>
               <div class="field message form-group">
                 <label>Plus de détail ? </label>
-                <textarea name="message" placeholder="D'autres désirs, destinations ou activités ? Ecrivez nous tous vos désires, nous vous ferons d'autres propositions" class="cform-textarea" cols="40" rows="10"></textarea>
+                <textarea ng-model="devis.details" placeholder="D'autres désirs, destinations ou activités ? Ecrivez nous tous vos désires, nous vous ferons d'autres propositions" class="cform-textarea" cols="40" rows="10"></textarea>
                 <div class="validation"></div>
               </div>
               
                 
               <div class="send-btn">
-                <!-- ./span12<input type="submit" value="ENVOYER" class="btn btn-get-started"> -->
-                <a ng-click="ValiderDevis(devis)" class="btn btn-get-started">VALIDER</a>
+                <a ng-click="disable || ValiderDevis(devis)" class="btn btn-get-started" ng-disabled="disable">VALIDER</a>
+                <button class="btn btn-get-started" type="button" disabled>
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                  <span class="sr-only">Loading...</span>
+                </button>
              </div>
 
             </form>
@@ -189,37 +183,3 @@
 
     </div>
   </section>
-
-  
-  <script>
-    ;(function($){
-    $.fn.datepicker.dates['fr'] = {
-    days: ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
-    daysShort: ["dim.", "lun.", "mar.", "mer.", "jeu.", "ven.", "sam."],
-    daysMin: ["d", "l", "ma", "me", "j", "v", "s"],
-    months: ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
-    monthsShort: ["janv.", "févr.", "mars", "avril", "mai", "juin", "juil.", "août", "sept.", "oct.", "nov.", "déc."],
-    today: "Aujourd'hui",
-    monthsTitle: "Mois",
-    clear: "Effacer",
-    weekStart: 1,
-    format: "dd/mm/yyyy"
-    };
-    }(jQuery));
-
-  $(function () {
-      $('#datetimepicker1').datepicker({
-        format: 'yyyy-MM-dd',
-        language: 'fr',
-        autoclose: true,
-        todayHighlight: true
-      });
-      $('#datetimepicker2').datepicker({
-        format: 'yyyy-MM-dd',
-        language: 'fr',
-        autoclose: true,
-        todayHighlight: true
-      });
-  });
-  
-</script>

@@ -4,7 +4,6 @@ const bcrypt = require('bcrypt');
 const nodemailer = require("nodemailer");
 const path = require('path');
 const hbs = require('nodemailer-express-handlebars');
-const jwt = require('jsonwebtoken');
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -82,11 +81,9 @@ app.post('/creationcompte', (req,res) => {
     try 
     {
         bcrypt.hash(req.body.password, 12).then(hash => {
-            db.query("INSERT INTO `comptes` VALUES (NULL, ?, ?, ?);", 
+            db.query("INSERT INTO `comptes` VALUES (NULL, ?, ?, ?, '', '');", 
             [ req.body.email, hash, req.body.telephone ], function (err, result) {
                 if (err) throw err;
-
-
                 res.status(200).json(result[0])
             });
         });
@@ -119,10 +116,10 @@ app.get('/connexioncompte/:email/:password', (req,res) => {
 
 app.post('/validationdevis', (req,res) => {
 
-    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)", [ req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details ], function (err, result) {
+    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [ req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification ], function (err, result) {
         if (err) throw err;
         let activites = [];
-
+        
         req.body.activites.forEach( function (activite) {
             activites.push([result.insertId, parseInt(activite.id)]);
         });
@@ -177,7 +174,7 @@ app.post('/validationdevis', (req,res) => {
                 if(error){
                     return console.log(error);
                 }
-                console.log('Message sent: ' + info.response);
+                res.status(200).json();
             });
         });
     });
