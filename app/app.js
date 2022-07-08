@@ -69,6 +69,11 @@ myApp.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
              });
 
             // récupere l'utilisateur connecté
+            var userid = $cookies.get('userid');
+            if (userid != null){
+                $rootScope.userid = userid;
+            }
+
             var useremail = $cookies.get('useremail');
             if (useremail != null){
                 $rootScope.useremail = useremail;

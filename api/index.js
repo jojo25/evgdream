@@ -86,7 +86,7 @@ app.post('/creationcompte', (req,res) => {
             db.query("INSERT INTO `comptes` VALUES (NULL, ?, ?, ?, '', '');", 
             [ req.body.email, hash, req.body.telephone ], function (err, result) {
                 if (err) throw err;
-                res.status(200).json(result[0])
+                res.status(200).json(result.insertId)
             });
         });
     } 
@@ -101,12 +101,12 @@ app.get('/connexioncompte/:email/:password', (req,res) => {
     const email = req.params.email;
     const password = req.params.password;
 
-    db.query("SELECT password FROM `comptes` WHERE mail = ?;", [ email ], function (err, result) {
+    db.query("SELECT * FROM `comptes` WHERE mail = ?;", [ email ], function (err, resultquery) {
 
-        let hashPassword = result[0].password;
+        let hashPassword = resultquery[0].password;
         bcrypt.compare(password, hashPassword, function(err, result) {
             if (result) {
-                res.status(200).json(result);
+                res.status(200).json(resultquery[0].id);
                 
             } else {
                 res.status(200).json();
@@ -208,7 +208,7 @@ app.post('/sendpassword', (req,res) => {
 
 app.post('/validationdevis', (req,res) => {
 
-    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [ req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification ], function (err, result) {
+    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'en cours' ?, ?)", [ req.body.id, req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification ], function (err, result) {
         if (err) throw err;
         let activites = [];
         
@@ -271,6 +271,17 @@ app.post('/validationdevis', (req,res) => {
         });
     });
 });
+
+// Retourne une destianation
+app.get('/devis/:id', (req,res) => {
+    const id = parseInt(req.params.id);
+
+    db.query("SELECT * FROM `devis` dev, `destination` dest WHERE dev.`destination` = dest.`id` AND dev.`compte_id` = ?;", [ id ], function (err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.status(200).json(result)
+      });
+})
 
 var getSqlDate = (date) => {
     let dd = String(date.getDate()).padStart(2, '0');

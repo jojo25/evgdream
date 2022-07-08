@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-md-3">
                 <ul class="list-group">
-                    <li class="list-group-item active">Devis</li>
+                    <li class="list-group-item active">Mes devis</li>
                     <li class="list-group-item">Mes informations</li>
                     <li class="list-group-item">Mes voyages</li>
                     <li class="list-group-item">Paiements</li>
@@ -32,17 +32,60 @@
                     <div ng-if="devis" class="alert alert-success" role="alert">
                         Votre demande de devis à bien été prise en compte. Nos équipes vous répondrons dans les meilleurs délais.
                     </div>
-                    <div class="content-devis"> 
+
+                    <div class="content-devis" ng-repeat="devis in listedevis"> 
                         <div class="row">
-                            <div class="col-md-10">
-                                <h3 style="font-weight: bold; font-size: 22px;">Budapest</h3>
+                            <div class="col-lg-9 col-md-6">
+                                <h3 style="font-weight: bold; font-size: 22px;">{{devis.nom}} : <span style="color: orange;">{{devis.etat}}</span></h3>
+                                Valable jusqu'au 25/05/2022
                             </div>
-                            <div class="col-md-2">
-                                <a style="margin:0" ui-sref="devis" class="btn-get-started">Détails</a>
+                            <div class="col-lg-3 col-md-4" style="text-align: right;">
+                                <button type="button" style="margin:0" class="btn btn-default btn-retour">Télecharger le devis</button>
                             </div>
                         </div>
                         <hr>
+                        <div class="row" style="text-align: center;">
+                            <div class="col-md-3">
+                                <p><i class="fa fa-calendar fa-2x icon-devis"></i> {{devis.date_depart  | date : 'dd/MM/yyyy'}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <p><i class="fa fa-map-marker fa-2x icon-devis"></i> {{devis.nom}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><i class="fa fa-users fa-2x icon-devis"></i> {{devis.nb_participants}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><i class="fa fa-euro fa-2x icon-devis"></i> {{devis.prix}}</p>
+                            </div>
+                        </div>
                     </div>
+
+                    <div class="content-devis" style="margin-top:20px;"> 
+                        <div class="row">
+                            <div class="col-lg-9 col-md-6">
+                                <h3 style="font-weight: bold; font-size: 22px;">Amsterdam : <span style="color: green;">Validé</span></h3>
+                            </div>
+                            <div class="col-lg-3 col-md-4" style="text-align: right;">
+                                <button type="button" style="margin:0" class="btn btn-get-started">Payer</button>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row" style="text-align: center;">
+                            <div class="col-md-3">
+                                <p><i class="fa fa-calendar fa-2x icon-devis"></i> 17/05/2022</p>
+                            </div>
+                            <div class="col-md-3">
+                                
+                                <p><i class="fa fa-map-marker fa-2x icon-devis"></i> Amsterdam</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><i class="fa fa-users fa-2x icon-devis"></i> 10</p>
+                            </div>
+                            <div class="col-md-3">
+                                <p><i class="fa fa-euro fa-2x icon-devis"></i> 700,00</p>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

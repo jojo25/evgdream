@@ -7,6 +7,15 @@ evgApp.controller("MonCompteController", ['$scope', '$rootScope', '$state', '$ht
         $scope.devis = true;
     }
 
+    $http.get($rootScope.apinode + 'devis/'+$rootScope.userid).then(successDestiCallback, errorDestiCallback);
+    function successDestiCallback(response){
+        $scope.listedevis = response.data;
+        console.log( $scope.listedevis);
+    }
+    function errorDestiCallback(error){
+        console.log(error);
+    }
+
     $scope.Deconnexion = function() { 
         $cookies.remove('useremail');
         $rootScope.useremail = null;

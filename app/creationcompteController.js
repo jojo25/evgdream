@@ -44,10 +44,12 @@ evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state',
                 $http(req).then(successPostCallback, errorPostCallback);
                 function successPostCallback(response){
                     $cookies.put('useremail', user.email);
+                    $cookies.put('userid', response.data);
                     $rootScope.useremail = user.email;
+                    $rootScope.userid = response.data;
 
                     if ($stateParams.devis){
-                        postdevis(user.email, user.telephone);
+                        postdevis($rootScope.userid, user.email, user.telephone);
                     }
                     else{
                         $state.go('moncompte');
@@ -63,13 +65,14 @@ evgApp.controller("CreationCompteController", ['$scope', '$rootScope', '$state',
         }        
     }
 
-    function postdevis(useremail, usertel){
+    function postdevis(userid, useremail, usertel){
         var totalPrix = 0;
         for(var i = 0; i < $rootScope.panierActivites.length; i++){
             totalPrix += $rootScope.panierActivites[i].prix;
         }
 
         var data = {
+            id : userid,
             mail : useremail,
             tel :  usertel,
             date_depart : $filter('date')($rootScope.devis.date_depart, "yyyy-MM-dd"),
