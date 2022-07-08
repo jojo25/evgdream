@@ -52,7 +52,6 @@ app.get('/destination/:id', (req,res) => {
 
     db.query("SELECT * FROM `destination` WHERE id= ?;", [ id ], function (err, result) {
         if (err) throw err;
-        console.log(result[0]);
         res.status(200).json(result[0])
       });
 })
@@ -115,6 +114,15 @@ app.get('/connexioncompte/:email/:password', (req,res) => {
     });
            
 })
+
+app.post('/devis', (req,res) => {
+    let id_compte = req.body.id_compte;
+
+    db.query("SELECT * FROM devis where id_compte = ?;", [ id_compte ], function (err, result) {
+        if (err) throw err;
+        res.status(200).json(result[0]);
+    });
+});
 
 app.post('/newpassword', (req,res) => {
     let password = req.body.password;
@@ -202,13 +210,13 @@ app.post('/sendpassword', (req,res) => {
             });
         }
         
-        
     });
 });
 
 app.post('/validationdevis', (req,res) => {
 
     db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'en cours' ?, ?)", [ req.body.id, req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification ], function (err, result) {
+
         if (err) throw err;
         let activites = [];
         
