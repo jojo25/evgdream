@@ -215,7 +215,7 @@ app.post('/sendpassword', (req,res) => {
 
 app.post('/validationdevis', (req,res) => {
 
-    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'en cours' ?, ?)", [ req.body.id, req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification ], function (err, result) {
+    db.query("INSERT INTO `devis` VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'En attente' ?, ?, ?)", [ req.body.id, req.body.date_depart, req.body.date_retour, req.body.ville_depart, req.body.destination, req.body.nb_participant, req.body.budget, req.body.details, req.body.prix, req.body.date_creation, req.body.date_modification, req.body.compte_id ], function (err, result) {
 
         if (err) throw err;
         let activites = [];
@@ -280,11 +280,19 @@ app.post('/validationdevis', (req,res) => {
     });
 });
 
+app.get('/updatedevis/:id', (req,res) => {
+    console.log(req.params.id);
+    db.query("UPDATE `devis` SET etat = 'Validé' where id = ?", [req.params.id], function (err, result) {
+        if (err) throw err;
+        res.status(200).json(result[0]);
+    });
+});
+
 // Retourne une destianation
 app.get('/devis/:id', (req,res) => {
     const id = parseInt(req.params.id);
 
-    db.query("SELECT * FROM `devis` dev, `destination` dest WHERE dev.`destination` = dest.`id` AND dev.`compte_id` = ?;", [ id ], function (err, result) {
+    db.query("SELECT * FROM `destination` dest, `devis` dev WHERE dev.`destination` = dest.`id` AND dev.`compte_id` = ?;", [ id ], function (err, result) {
         if (err) throw err;
         console.log(result);
         res.status(200).json(result)

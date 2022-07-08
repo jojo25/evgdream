@@ -22,5 +22,15 @@ evgApp.controller("MonCompteController", ['$scope', '$rootScope', '$state', '$ht
         $state.go('accueil');
     }
 
+    $scope.validDevis = function(devis) {
+        $http.get($rootScope.apinode + 'updatedevis/'+devis.id).then(successDestiCallback, errorDestiCallback);
+        function successDestiCallback(response){
+            devis.etat = 'Validé';
+        }
+        function errorDestiCallback(error){
+            console.log(error);
+        }
+    }
+
 }]);
 
